@@ -7,6 +7,7 @@ data Heap a = Nil
             | Node a (Heap a) (Heap a)
             deriving (Show)
 
+-- I'm sure there's a better way to do this...
 maxHeapify :: Ord a => Heap a -> Heap a
 -- if the heap is empty or has no children, it's already a max-heap
 maxHeapify Nil = Nil
@@ -21,9 +22,10 @@ maxHeapify (Node p (Node l ll lr) Nil)
     | p >= l    = Node p (Node l ll lr) Nil
     | otherwise = Node l (maxHeapify (Node p ll lr)) Nil
 
-
-
-{- Code for prettifying and rendering heaps -}
+{-
+  Code for prettifying and rendering heaps
+  Shamelessly cribbed from https://github.com/cschneid/cschneid-pretty/blob/master/src/Cschneid/Pretty.hs
+-}
 instance Pretty a => Pretty (Heap a) where
   pPrint (Nil)        = empty
   pPrint (Node v l r) = vcat [ text "Node: " <> pPrint v
