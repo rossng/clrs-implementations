@@ -1,4 +1,4 @@
-name:                heap
+name:                clrs-implementations
 version:             0.1.0.0
 synopsis:            Some implementations of data structures and algorithms from CLRS
 homepage:            http://github.com/rossng/clrs-implementations
